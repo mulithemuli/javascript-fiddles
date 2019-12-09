@@ -8,4 +8,8 @@ Two versions of this visualisation exist.
 
 Each of the version has a JavaScript function at the top of the file, `startIt()` where the input array can be configured.
 
-Code is baded on [https://www.guru99.com/quicksort-in-javascript.html](https://www.guru99.com/quicksort-in-javascript.html)
+Code is baded on [https://www.guru99.com/quicksort-in-javascript.html](https://www.guru99.com/quicksort-in-javascript.html).
+
+## Trivia
+
+Got inspired to do this by [Quick-sort with Hungarian (Küküllőmenti legényes) folk dance](https://www.youtube.com/watch?v=ywWBy6J5gz8).
