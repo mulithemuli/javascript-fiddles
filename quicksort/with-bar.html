@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuickSort visualizes every step selectable</title>
+    <link rel="stylesheet" href="with-bar.css">
+</head>
+<body>
+    <h1>Quicksort in steps</h1>
+    <p>
+        <a href="https://codepen.io/mulithemuli/pen/eYmJNPL?editors=1010" target="_blank">on CodePen</a>
+    </p>
+    <p>
+        This performs and visualises the Quick sort.<br>
+        Based on <a href="without-bar.html">without-bar.html</a><br>
+        Underneath the visualisation of the step is a slider which can be used to advance to the next step.
+    </p>
+    <p>
+        At the beginning (<code>startIt()</code>) the properties of the array can be modified.
+    </p>
+    <p>
+        <a href="https://www.guru99.com/quicksort-in-javascript.html" target="_blank">https://www.guru99.com/quicksort-in-javascript.html</a>
+    </p>
+    <div id="draw_area"></div>
+    <div class="controls">
+        <button aria-label="previous" id="previous">&lt;</button>
+        <input type="range" id="snapshot" step="1">
+        <button aria-label="next" id="next">&gt;</button>
+    </div>
+    <script src="with-bar.js"></script>
+</body>
+</html>
