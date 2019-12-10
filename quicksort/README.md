@@ -6,8 +6,8 @@ Two versions of this visualisation exist.
 - [All steps on a single page to scroll](without-bar.html) (as well on [CodePen](https://codepen.io/mulithemuli/pen/BayoeMR?editors=1010))
 - [Every step selectable via slider](with-bar.html) (as well on [CodePen](https://codepen.io/mulithemuli/pen/eYmJNPL?editors=1010))
 
-The global JavaScript file has a function at the top of the file, `startIt()` where the input array and pivot selection 
-can be configured.
+The public API is exposed to the window scope as `quickSort` variable. The `start` function provides configuration
+options for the array to sort and pivot selection.
 
 Code is baded on [https://www.guru99.com/quicksort-in-javascript.html](https://www.guru99.com/quicksort-in-javascript.html).
 
