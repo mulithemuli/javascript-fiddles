@@ -1,28 +1,44 @@
-// configuration is located in this method
-startIt();
+(function() {
+  // configuration is located in this method
+  quickSort.start();
 
-// draw only one snapshot
-draw(snapshots[0], 1);
+  /*
+   * full configuration example with random numbers (pivotPosition is optional)
+  quickSort.start({
+    pivotPosition: (start, end) => end - 1,
+    count: 25
+  });
+   */
+  /*
+   * full configuration example with fixed numbers (pivotPosition is optional)
+  quickSort.start({
+    pivotPosition: (start, end) => end - 1,
+    numbers: [-2, -1, 5, 5, 5, 6, 7, 8]
+  });
+   */
 
-// load according snapshot on selection
-const snapshot = document.getElementById('snapshot');
-snapshot.setAttribute('min', '1');
-snapshot.setAttribute('max', `${snapshots.length}`);
-snapshot.value = 1;
-snapshot.addEventListener('input', () => {
-  document.getElementById('draw_area').innerHTML = '';
-  draw(snapshots[snapshot.value - 1], snapshot.value);
-});
+  // draw only one snapshot
+  quickSort.draw(1);
 
-const previous = document.getElementById('previous');
-previous.addEventListener('click', () => {
-  snapshot.value = snapshot.value > 1 ? snapshot.value - 1 : snapshot.value;
-  snapshot.dispatchEvent(new Event('input'));
-});
+  // load according snapshot on selection
+  const snapshot = document.getElementById('snapshot');
+  snapshot.setAttribute('min', '1');
+  snapshot.setAttribute('max', `${quickSort.steps()}`);
+  snapshot.value = 1;
+  snapshot.addEventListener('input', () => {
+    document.getElementById('draw_area').innerHTML = '';
+    quickSort.draw(snapshot.value);
+  });
 
-const next = document.getElementById('next');
-next.addEventListener('click', () => {
-  snapshot.value = snapshot.value < snapshots.length ? parseInt(snapshot.value, 10) + 1 : snapshot.value;
-  snapshot.dispatchEvent(new Event('input'));
-});
+  const previous = document.getElementById('previous');
+  previous.addEventListener('click', () => {
+    snapshot.value = snapshot.value > 1 ? snapshot.value - 1 : snapshot.value;
+    snapshot.dispatchEvent(new Event('input'));
+  });
 
+  const next = document.getElementById('next');
+  next.addEventListener('click', () => {
+    snapshot.value = snapshot.value < quickSort.steps() ? parseInt(snapshot.value, 10) + 1 : snapshot.value;
+    snapshot.dispatchEvent(new Event('input'));
+  });
+}());

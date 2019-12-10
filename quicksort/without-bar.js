@@ -1,5 +1,5 @@
-// configuration is located in this method
-startIt();
+(function() {
+  quickSort.start();
 
-// draw all steps at once
-snapshots.forEach((element, i) => draw(element, i + 1));
+  quickSort.draw();
+}());
