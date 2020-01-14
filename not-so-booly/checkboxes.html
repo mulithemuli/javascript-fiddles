@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Not so booly checkboxes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Not so booly checkboxes</h1>
+    <p>
+        Difference between value and the checked property of checkboxes. Explained with jQuery and vanilla JavaScript.
+    </p>
+    <div><code>&lt;label for="im_a_checkbox"&gt;The checkbox&lt;label&gt;<br>&lt;input type="checkbox" id="im_a_checkbox" name="im_a_checkbox" value="iAmACheckbox"&gt;</code></div>
+    <div class="line">
+        <form id="form">
+            <label for="im_a_checkbox">The checkbox</label>
+            <input type="checkbox" id="im_a_checkbox" name="im_a_checkbox" value="iAmACheckbox">
+            <small>check or uncheck me to see the result</small>
+        </form>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>JS</th>
+            <th>Result</th>
+            <th>Why?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th rowspan="2" scope="row">Value</th>
+            <td><code>$('#im_a_checkbox').val()</code></td>
+            <td><code id="result_jquery_val"></code></td>
+            <td>The value is always there. It will be displayed independent of the checkboxes state. jQuery normalizes the access to the value attribute with the function <code>.val()</code>.</td>
+        </tr>
+        <tr>
+            <td><code>document.getElementById('im_a_checkbox').value</code></td>
+            <td><code id="result_js_val"></code></td>
+            <td>Same reason as above. Instead of using jQuery one could use the native elements <code>value</code> Attribute.</td>
+        </tr>
+        <tr>
+            <th rowspan="2" scope="row">Checked</th>
+            <td><code>$('#im_a_checkbox').prop('checked')</code></td>
+            <td><code id="result_jquery_checked"></code></td>
+            <td>The jQuery <code>.prop</code> function normalizes the access to an elements state and returns a boolean value. It could be used for radios as well.</td>
+        </tr>
+        <tr>
+            <td><code>document.getElementById('im_a_checkbox').checked</code></td>
+            <td><code id="result_js_checked"></code></td>
+            <td>This is the way to access the state via vanilla JavaScript.</td>
+        </tr>
+        <tr>
+            <th>Querystring</th>
+            <td><code>$('im_a_checkbox').serialize()</code></td>
+            <td><code id="querystring"></code></td>
+            <td>Demonstrates that only the checked item will be taken as a query string. jQuery <code>.serialize()</code> is a convenient function to get the form values (with the according names) as query string.</td>
+        </tbody>
+    </table>
+    <h2>Conclusion</h2>
+    <p>
+        The value of checkboxes is always there – ignoring its state. When a request to a server would be send the name of the component will be associated with the value as request parameter. But only for the checked elements.
+    </p>
+    <h2>Bonus</h2>
+    <p>
+        To modify the state of checkboxes we always use the boolean properties. As we can see in the event handlers in the script the <code>show</code> function is called since no click event is fired when changing the state programatically.
+    </p>
+    <div>
+        <button type="button" id="button_jquery_check"><code>$('#im_a_checkbox')<strong>.prop('checked', true)</strong></code></button>
+        <button type="button" id="button_js_check"><code>document.getElementById('im_a_checkbox')<strong>.checked = true</strong></code></button>
+    </div>
+    <div>
+        <button type="button" id="button_jquery_uncheck"><code>$('#im_a_checkbox')<strong>.prop('checked', false)</strong></code></button>
+        <button type="button" id="button_js_uncheck"><code>document.getElementById('im_a_checkbox')<strong>.checked = false</strong></code></button>
+    </div>
+    <p>
+        When the value is updated it does not change the state. So doing this we would alter the value which will be send in a request. <small>For simplicity we do not implement the jQuery version of this example.</small>
+    </p>
+    <form>
+        <div class="line">
+            <input id="checkbox_value">
+            <button type="button" id="update_value"><code>document.getElementById('im_a_checkbox')<strong>.value</strong> = document.getElementById('checkbox_value')<strong>.value</strong></code></button>
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="checkboxes.js"></script>
+</body>
+</html>
